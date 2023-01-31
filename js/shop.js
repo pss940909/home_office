@@ -225,6 +225,10 @@ function addQty(id) {
 function minusQty(id) {
   cart.forEach(function (item, index) {
     if (item.id === id) {
+      if (cart[index].quantity === 1) {
+        alert("Order quantity cannot be 0.");
+        return;
+      }
       cart[index].quantity--;
       localStorage.setItem("cart", JSON.stringify(cart));
     }
